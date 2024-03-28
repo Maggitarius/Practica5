@@ -1,0 +1,464 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Steam_Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="ID_Account" />
+    </Key>
+    <Property Name="ID_Account" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name_Account" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Registration_Date" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Review_ID" Type="Int32" />
+    <Property Name="Authorization_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Authorization_Table" Relationship="Self.FK__Account__Authori__66603565" FromRole="Account" ToRole="Authorization_Table" />
+    <NavigationProperty Name="Reviews" Relationship="Self.FK__Account__Review___656C112C" FromRole="Account" ToRole="Reviews" />
+    <NavigationProperty Name="Account_Game" Relationship="Self.FK__Account_G__Accou__72C60C4A" FromRole="Account" ToRole="Account_Game" />
+    <NavigationProperty Name="Purchases" Relationship="Self.FK__Purchases__Accou__6EF57B66" FromRole="Account" ToRole="Purchases" />
+    <NavigationProperty Name="Trading_Platform" Relationship="Self.FK__Trading_P__Custo__797309D9" FromRole="Account" ToRole="Trading_Platform" />
+    <NavigationProperty Name="Trading_Platform1" Relationship="Self.FK__Trading_P__Selle__787EE5A0" FromRole="Account" ToRole="Trading_Platform" />
+  </EntityType>
+  <EntityType Name="Account_Game">
+    <Key>
+      <PropertyRef Name="ID_Account_Game" />
+    </Key>
+    <Property Name="ID_Account_Game" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Account_ID" Type="Int32" Nullable="false" />
+    <Property Name="Game_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Account" Relationship="Self.FK__Account_G__Accou__72C60C4A" FromRole="Account_Game" ToRole="Account" />
+    <NavigationProperty Name="Games" Relationship="Self.FK__Account_G__Game___73BA3083" FromRole="Account_Game" ToRole="Games" />
+  </EntityType>
+  <EntityType Name="Authorization_Table">
+    <Key>
+      <PropertyRef Name="ID_Authorization" />
+    </Key>
+    <Property Name="ID_Authorization" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Login_Authorization" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Password_Authorization" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Role_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Account" Relationship="Self.FK__Account__Authori__66603565" FromRole="Authorization_Table" ToRole="Account" />
+    <NavigationProperty Name="Roles" Relationship="Self.FK__Authoriza__Role___5EBF139D" FromRole="Authorization_Table" ToRole="Roles" />
+  </EntityType>
+  <EntityType Name="Developers">
+    <Key>
+      <PropertyRef Name="ID_Developer" />
+    </Key>
+    <Property Name="ID_Developer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name_Developer" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Games" Relationship="Self.FK__Games__Developer__5165187F" FromRole="Developers" ToRole="Games" />
+  </EntityType>
+  <EntityType Name="Discounts">
+    <Key>
+      <PropertyRef Name="ID_Discount" />
+    </Key>
+    <Property Name="ID_Discount" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Percentage_Discount" Type="Decimal" Precision="3" Scale="2" />
+    <Property Name="Discount_Start_Date" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Discount_End_Date" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Games" Relationship="Self.FK__Games__Discount___5441852A" FromRole="Discounts" ToRole="Games" />
+  </EntityType>
+  <EntityType Name="Games">
+    <Key>
+      <PropertyRef Name="ID_Game" />
+    </Key>
+    <Property Name="ID_Game" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name_Game" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Realise_date" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description_Game" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+    <Property Name="Developer_ID" Type="Int32" Nullable="false" />
+    <Property Name="Publisher_ID" Type="Int32" Nullable="false" />
+    <Property Name="Tag_ID" Type="Int32" Nullable="false" />
+    <Property Name="Discount_ID" Type="Int32" />
+    <NavigationProperty Name="Account_Game" Relationship="Self.FK__Account_G__Game___73BA3083" FromRole="Games" ToRole="Account_Game" />
+    <NavigationProperty Name="Developers" Relationship="Self.FK__Games__Developer__5165187F" FromRole="Games" ToRole="Developers" />
+    <NavigationProperty Name="Discounts" Relationship="Self.FK__Games__Discount___5441852A" FromRole="Games" ToRole="Discounts" />
+    <NavigationProperty Name="Publishers" Relationship="Self.FK__Games__Publisher__52593CB8" FromRole="Games" ToRole="Publishers" />
+    <NavigationProperty Name="Tags" Relationship="Self.FK__Games__Tag_ID__534D60F1" FromRole="Games" ToRole="Tags" />
+    <NavigationProperty Name="Items" Relationship="Self.FK__Items__Game_ID__693CA210" FromRole="Games" ToRole="Items" />
+    <NavigationProperty Name="Purchases" Relationship="Self.FK__Purchases__Game___6FE99F9F" FromRole="Games" ToRole="Purchases" />
+    <NavigationProperty Name="Reviews" Relationship="Self.FK__Reviews__Game_ID__628FA481" FromRole="Games" ToRole="Reviews" />
+  </EntityType>
+  <EntityType Name="Items">
+    <Key>
+      <PropertyRef Name="ID_Item" />
+    </Key>
+    <Property Name="ID_Item" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name_Item" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Type_Item" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Price" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="Game_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Games" Relationship="Self.FK__Items__Game_ID__693CA210" FromRole="Items" ToRole="Games" />
+    <NavigationProperty Name="Trading_Platform" Relationship="Self.FK__Trading_P__Item___778AC167" FromRole="Items" ToRole="Trading_Platform" />
+  </EntityType>
+  <EntityType Name="Publishers">
+    <Key>
+      <PropertyRef Name="ID_Publisher" />
+    </Key>
+    <Property Name="ID_Publisher" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name_Publisher" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Games" Relationship="Self.FK__Games__Publisher__52593CB8" FromRole="Publishers" ToRole="Games" />
+  </EntityType>
+  <EntityType Name="Purchases">
+    <Key>
+      <PropertyRef Name="ID_Purchase" />
+    </Key>
+    <Property Name="ID_Purchase" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Account_ID" Type="Int32" Nullable="false" />
+    <Property Name="Game_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Account" Relationship="Self.FK__Purchases__Accou__6EF57B66" FromRole="Purchases" ToRole="Account" />
+    <NavigationProperty Name="Games" Relationship="Self.FK__Purchases__Game___6FE99F9F" FromRole="Purchases" ToRole="Games" />
+  </EntityType>
+  <EntityType Name="Reviews">
+    <Key>
+      <PropertyRef Name="ID_Review" />
+    </Key>
+    <Property Name="ID_Review" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Estimation" Type="Int32" Nullable="false" />
+    <Property Name="Text_Review" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Game_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Account" Relationship="Self.FK__Account__Review___656C112C" FromRole="Reviews" ToRole="Account" />
+    <NavigationProperty Name="Games" Relationship="Self.FK__Reviews__Game_ID__628FA481" FromRole="Reviews" ToRole="Games" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="ID_Role" />
+    </Key>
+    <Property Name="ID_Role" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name_Role" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Authorization_Table" Relationship="Self.FK__Authoriza__Role___5EBF139D" FromRole="Roles" ToRole="Authorization_Table" />
+  </EntityType>
+  <EntityType Name="Tags">
+    <Key>
+      <PropertyRef Name="ID_Tag" />
+    </Key>
+    <Property Name="ID_Tag" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name_Tag" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Games" Relationship="Self.FK__Games__Tag_ID__534D60F1" FromRole="Tags" ToRole="Games" />
+  </EntityType>
+  <EntityType Name="Trading_Platform">
+    <Key>
+      <PropertyRef Name="ID_Trading_Platform" />
+    </Key>
+    <Property Name="ID_Trading_Platform" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Price" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="Item_ID" Type="Int32" Nullable="false" />
+    <Property Name="Seller_ID" Type="Int32" Nullable="false" />
+    <Property Name="Customer_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Account" Relationship="Self.FK__Trading_P__Custo__797309D9" FromRole="Trading_Platform" ToRole="Account" />
+    <NavigationProperty Name="Account1" Relationship="Self.FK__Trading_P__Selle__787EE5A0" FromRole="Trading_Platform" ToRole="Account" />
+    <NavigationProperty Name="Items" Relationship="Self.FK__Trading_P__Item___778AC167" FromRole="Trading_Platform" ToRole="Items" />
+  </EntityType>
+  <Association Name="FK__Account__Authori__66603565">
+    <End Role="Authorization_Table" Type="Self.Authorization_Table" Multiplicity="1" />
+    <End Role="Account" Type="Self.Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Authorization_Table">
+        <PropertyRef Name="ID_Authorization" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="Authorization_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Account__Review___656C112C">
+    <End Role="Reviews" Type="Self.Reviews" Multiplicity="0..1" />
+    <End Role="Account" Type="Self.Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reviews">
+        <PropertyRef Name="ID_Review" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="Review_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Account_G__Accou__72C60C4A">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="Account_Game" Type="Self.Account_Game" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="ID_Account" />
+      </Principal>
+      <Dependent Role="Account_Game">
+        <PropertyRef Name="Account_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Purchases__Accou__6EF57B66">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="Purchases" Type="Self.Purchases" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="ID_Account" />
+      </Principal>
+      <Dependent Role="Purchases">
+        <PropertyRef Name="Account_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Trading_P__Custo__797309D9">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="Trading_Platform" Type="Self.Trading_Platform" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="ID_Account" />
+      </Principal>
+      <Dependent Role="Trading_Platform">
+        <PropertyRef Name="Customer_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Trading_P__Selle__787EE5A0">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="Trading_Platform" Type="Self.Trading_Platform" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="ID_Account" />
+      </Principal>
+      <Dependent Role="Trading_Platform">
+        <PropertyRef Name="Seller_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Account_G__Game___73BA3083">
+    <End Role="Games" Type="Self.Games" Multiplicity="1" />
+    <End Role="Account_Game" Type="Self.Account_Game" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Games">
+        <PropertyRef Name="ID_Game" />
+      </Principal>
+      <Dependent Role="Account_Game">
+        <PropertyRef Name="Game_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Authoriza__Role___5EBF139D">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+    <End Role="Authorization_Table" Type="Self.Authorization_Table" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="ID_Role" />
+      </Principal>
+      <Dependent Role="Authorization_Table">
+        <PropertyRef Name="Role_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Games__Developer__5165187F">
+    <End Role="Developers" Type="Self.Developers" Multiplicity="1" />
+    <End Role="Games" Type="Self.Games" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Developers">
+        <PropertyRef Name="ID_Developer" />
+      </Principal>
+      <Dependent Role="Games">
+        <PropertyRef Name="Developer_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Games__Discount___5441852A">
+    <End Role="Discounts" Type="Self.Discounts" Multiplicity="0..1" />
+    <End Role="Games" Type="Self.Games" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Discounts">
+        <PropertyRef Name="ID_Discount" />
+      </Principal>
+      <Dependent Role="Games">
+        <PropertyRef Name="Discount_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Games__Publisher__52593CB8">
+    <End Role="Publishers" Type="Self.Publishers" Multiplicity="1" />
+    <End Role="Games" Type="Self.Games" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Publishers">
+        <PropertyRef Name="ID_Publisher" />
+      </Principal>
+      <Dependent Role="Games">
+        <PropertyRef Name="Publisher_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Games__Tag_ID__534D60F1">
+    <End Role="Tags" Type="Self.Tags" Multiplicity="1" />
+    <End Role="Games" Type="Self.Games" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tags">
+        <PropertyRef Name="ID_Tag" />
+      </Principal>
+      <Dependent Role="Games">
+        <PropertyRef Name="Tag_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Items__Game_ID__693CA210">
+    <End Role="Games" Type="Self.Games" Multiplicity="1" />
+    <End Role="Items" Type="Self.Items" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Games">
+        <PropertyRef Name="ID_Game" />
+      </Principal>
+      <Dependent Role="Items">
+        <PropertyRef Name="Game_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Purchases__Game___6FE99F9F">
+    <End Role="Games" Type="Self.Games" Multiplicity="1" />
+    <End Role="Purchases" Type="Self.Purchases" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Games">
+        <PropertyRef Name="ID_Game" />
+      </Principal>
+      <Dependent Role="Purchases">
+        <PropertyRef Name="Game_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Reviews__Game_ID__628FA481">
+    <End Role="Games" Type="Self.Games" Multiplicity="1" />
+    <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Games">
+        <PropertyRef Name="ID_Game" />
+      </Principal>
+      <Dependent Role="Reviews">
+        <PropertyRef Name="Game_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Trading_P__Item___778AC167">
+    <End Role="Items" Type="Self.Items" Multiplicity="1" />
+    <End Role="Trading_Platform" Type="Self.Trading_Platform" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Items">
+        <PropertyRef Name="ID_Item" />
+      </Principal>
+      <Dependent Role="Trading_Platform">
+        <PropertyRef Name="Item_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Steam_Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Account" EntityType="Self.Account" />
+    <EntitySet Name="Account_Game" EntityType="Self.Account_Game" />
+    <EntitySet Name="Authorization_Table" EntityType="Self.Authorization_Table" />
+    <EntitySet Name="Developers" EntityType="Self.Developers" />
+    <EntitySet Name="Discounts" EntityType="Self.Discounts" />
+    <EntitySet Name="Games" EntityType="Self.Games" />
+    <EntitySet Name="Items" EntityType="Self.Items" />
+    <EntitySet Name="Publishers" EntityType="Self.Publishers" />
+    <EntitySet Name="Purchases" EntityType="Self.Purchases" />
+    <EntitySet Name="Reviews" EntityType="Self.Reviews" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" />
+    <EntitySet Name="Tags" EntityType="Self.Tags" />
+    <EntitySet Name="Trading_Platform" EntityType="Self.Trading_Platform" />
+    <AssociationSet Name="FK__Account__Authori__66603565" Association="Self.FK__Account__Authori__66603565">
+      <End Role="Authorization_Table" EntitySet="Authorization_Table" />
+      <End Role="Account" EntitySet="Account" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Account__Review___656C112C" Association="Self.FK__Account__Review___656C112C">
+      <End Role="Reviews" EntitySet="Reviews" />
+      <End Role="Account" EntitySet="Account" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Account_G__Accou__72C60C4A" Association="Self.FK__Account_G__Accou__72C60C4A">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Account_Game" EntitySet="Account_Game" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Purchases__Accou__6EF57B66" Association="Self.FK__Purchases__Accou__6EF57B66">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Purchases" EntitySet="Purchases" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Trading_P__Custo__797309D9" Association="Self.FK__Trading_P__Custo__797309D9">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Trading_Platform" EntitySet="Trading_Platform" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Trading_P__Selle__787EE5A0" Association="Self.FK__Trading_P__Selle__787EE5A0">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Trading_Platform" EntitySet="Trading_Platform" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Account_G__Game___73BA3083" Association="Self.FK__Account_G__Game___73BA3083">
+      <End Role="Games" EntitySet="Games" />
+      <End Role="Account_Game" EntitySet="Account_Game" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Authoriza__Role___5EBF139D" Association="Self.FK__Authoriza__Role___5EBF139D">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Authorization_Table" EntitySet="Authorization_Table" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Games__Developer__5165187F" Association="Self.FK__Games__Developer__5165187F">
+      <End Role="Developers" EntitySet="Developers" />
+      <End Role="Games" EntitySet="Games" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Games__Discount___5441852A" Association="Self.FK__Games__Discount___5441852A">
+      <End Role="Discounts" EntitySet="Discounts" />
+      <End Role="Games" EntitySet="Games" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Games__Publisher__52593CB8" Association="Self.FK__Games__Publisher__52593CB8">
+      <End Role="Publishers" EntitySet="Publishers" />
+      <End Role="Games" EntitySet="Games" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Games__Tag_ID__534D60F1" Association="Self.FK__Games__Tag_ID__534D60F1">
+      <End Role="Tags" EntitySet="Tags" />
+      <End Role="Games" EntitySet="Games" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Items__Game_ID__693CA210" Association="Self.FK__Items__Game_ID__693CA210">
+      <End Role="Games" EntitySet="Games" />
+      <End Role="Items" EntitySet="Items" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Purchases__Game___6FE99F9F" Association="Self.FK__Purchases__Game___6FE99F9F">
+      <End Role="Games" EntitySet="Games" />
+      <End Role="Purchases" EntitySet="Purchases" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Reviews__Game_ID__628FA481" Association="Self.FK__Reviews__Game_ID__628FA481">
+      <End Role="Games" EntitySet="Games" />
+      <End Role="Reviews" EntitySet="Reviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Trading_P__Item___778AC167" Association="Self.FK__Trading_P__Item___778AC167">
+      <End Role="Items" EntitySet="Items" />
+      <End Role="Trading_Platform" EntitySet="Trading_Platform" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(Steam_Model.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(Steam_Model.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="BackupSteamDatabase" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

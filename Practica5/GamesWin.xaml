@@ -1,0 +1,62 @@
+﻿<Window x:Class="Practica5.GamesWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Practica5"
+        mc:Ignorable="d"
+        Title="GamesWin" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Button x:Name="Back" Content="Вернуться на главную страницу" Click="Back_Click"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <DataGrid x:Name="GamesTable" IsReadOnly="True" SelectionChanged="GamesTable_SelectionChanged"/>
+            <DataGrid x:Name="DevelopersTable" Visibility="Hidden"/>
+            <DataGrid x:Name="PublishersTable" Visibility="Hidden"/>
+            <DataGrid x:Name="TagsTable" Visibility="Hidden"/>
+            <DataGrid x:Name="DiscountTable" Visibility="Hidden"/>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="NameG" Grid.Column="0"/>
+                <TextBox x:Name="Realise" Grid.Column="1"/>
+                <TextBox x:Name="Description" Grid.Column="2"/>
+                <TextBox x:Name="Price" Grid.Column="3"/>
+                <ComboBox x:Name="DevelopersComboBox" Grid.Column="4"/>
+                <ComboBox x:Name="PublishersComboBox" Grid.Column="5"/>
+                <ComboBox x:Name="TagsComboBox" Grid.Column="6"/>
+                <ComboBox x:Name="DiscountsComboBox" Grid.Column="7"/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="Add" Grid.Column="0" Content="Добавить" Click="Add_Click"/>
+                <Button x:Name="Change" Grid.Column="1" Content="Изменить" Click="Change_Click"/>
+                <Button x:Name="Delete" Grid.Column="2" Content="Удалить" Click="Delete_Click"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

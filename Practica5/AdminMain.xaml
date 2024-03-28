@@ -1,0 +1,37 @@
+﻿<Window x:Class="Practica5.AdminMain"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Practica5"
+        mc:Ignorable="d"
+        Title="AdminMain" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Ну вы админ, делайте что хотите(*￣︶￣*)"/>
+        <Button HorizontalAlignment="Center" VerticalAlignment="Center" Content="Сделать BackUp" Click="Button_Click"/>
+        <Button Content="Открыть таблицу Account" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Account_Click"/>
+        <Button Content="Открыть таблицу Account-Game" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Click="AccountGameWin_Click"/>
+        <Button Content="Открыть таблицу Games" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Games_Click"/>
+        <Button Content="Открыть таблицу Developers" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Click="DevelopersWin_Click"/>
+        <Button Content="Открыть таблицу Publishers" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Click="PublishersWin_Click"/>
+        <Button Content="Открыть таблицу Tags" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Click="TagsWin_Click"/>
+        <Button Content="Открыть таблицу Items" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Click="ItemsWin_Click"/>
+        <Button Content="Открыть таблицу Discounts" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Click="DiscountsWin_Click"/>
+        <Button Content="Открыть таблицу Reviews" Grid.Row="3" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Click="ReviewsWin_Click"/>
+        <Button Content="Открыть таблицу Purchases" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Click="PurchasesWin_Click"/>
+        <Button Content="Открыть таблицу Trading_Platform" Grid.Row="4" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Click="TradingPlatformWin_Click"/>
+        <Button Content="Добавить нового пользователя" HorizontalAlignment="Center" VerticalAlignment="Center" Click="NewUser_Click" Grid.Row="4" Grid.Column="1"/>
+    </Grid>
+</Window>

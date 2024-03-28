@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище Steam_ModelContainer" CdmEntityContainer="Steam_Entities">
+    <EntitySetMapping Name="Account">
+      <EntityTypeMapping TypeName="Steam_Model.Account">
+        <MappingFragment StoreEntitySet="Account">
+          <ScalarProperty Name="ID_Account" ColumnName="ID_Account" />
+          <ScalarProperty Name="Name_Account" ColumnName="Name_Account" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Registration_Date" ColumnName="Registration_Date" />
+          <ScalarProperty Name="Review_ID" ColumnName="Review_ID" />
+          <ScalarProperty Name="Authorization_ID" ColumnName="Authorization_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Account_Game">
+      <EntityTypeMapping TypeName="Steam_Model.Account_Game">
+        <MappingFragment StoreEntitySet="Account_Game">
+          <ScalarProperty Name="ID_Account_Game" ColumnName="ID_Account_Game" />
+          <ScalarProperty Name="Account_ID" ColumnName="Account_ID" />
+          <ScalarProperty Name="Game_ID" ColumnName="Game_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Authorization_Table">
+      <EntityTypeMapping TypeName="Steam_Model.Authorization_Table">
+        <MappingFragment StoreEntitySet="Authorization_Table">
+          <ScalarProperty Name="ID_Authorization" ColumnName="ID_Authorization" />
+          <ScalarProperty Name="Login_Authorization" ColumnName="Login_Authorization" />
+          <ScalarProperty Name="Password_Authorization" ColumnName="Password_Authorization" />
+          <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Developers">
+      <EntityTypeMapping TypeName="Steam_Model.Developers">
+        <MappingFragment StoreEntitySet="Developers">
+          <ScalarProperty Name="ID_Developer" ColumnName="ID_Developer" />
+          <ScalarProperty Name="Name_Developer" ColumnName="Name_Developer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Discounts">
+      <EntityTypeMapping TypeName="Steam_Model.Discounts">
+        <MappingFragment StoreEntitySet="Discounts">
+          <ScalarProperty Name="ID_Discount" ColumnName="ID_Discount" />
+          <ScalarProperty Name="Percentage_Discount" ColumnName="Percentage_Discount" />
+          <ScalarProperty Name="Discount_Start_Date" ColumnName="Discount_Start_Date" />
+          <ScalarProperty Name="Discount_End_Date" ColumnName="Discount_End_Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Games">
+      <EntityTypeMapping TypeName="Steam_Model.Games">
+        <MappingFragment StoreEntitySet="Games">
+          <ScalarProperty Name="ID_Game" ColumnName="ID_Game" />
+          <ScalarProperty Name="Name_Game" ColumnName="Name_Game" />
+          <ScalarProperty Name="Realise_date" ColumnName="Realise_date" />
+          <ScalarProperty Name="Description_Game" ColumnName="Description_Game" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Developer_ID" ColumnName="Developer_ID" />
+          <ScalarProperty Name="Publisher_ID" ColumnName="Publisher_ID" />
+          <ScalarProperty Name="Tag_ID" ColumnName="Tag_ID" />
+          <ScalarProperty Name="Discount_ID" ColumnName="Discount_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Items">
+      <EntityTypeMapping TypeName="Steam_Model.Items">
+        <MappingFragment StoreEntitySet="Items">
+          <ScalarProperty Name="ID_Item" ColumnName="ID_Item" />
+          <ScalarProperty Name="Name_Item" ColumnName="Name_Item" />
+          <ScalarProperty Name="Type_Item" ColumnName="Type_Item" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Game_ID" ColumnName="Game_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Publishers">
+      <EntityTypeMapping TypeName="Steam_Model.Publishers">
+        <MappingFragment StoreEntitySet="Publishers">
+          <ScalarProperty Name="ID_Publisher" ColumnName="ID_Publisher" />
+          <ScalarProperty Name="Name_Publisher" ColumnName="Name_Publisher" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Purchases">
+      <EntityTypeMapping TypeName="Steam_Model.Purchases">
+        <MappingFragment StoreEntitySet="Purchases">
+          <ScalarProperty Name="ID_Purchase" ColumnName="ID_Purchase" />
+          <ScalarProperty Name="Account_ID" ColumnName="Account_ID" />
+          <ScalarProperty Name="Game_ID" ColumnName="Game_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reviews">
+      <EntityTypeMapping TypeName="Steam_Model.Reviews">
+        <MappingFragment StoreEntitySet="Reviews">
+          <ScalarProperty Name="ID_Review" ColumnName="ID_Review" />
+          <ScalarProperty Name="Estimation" ColumnName="Estimation" />
+          <ScalarProperty Name="Text_Review" ColumnName="Text_Review" />
+          <ScalarProperty Name="Game_ID" ColumnName="Game_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="Steam_Model.Roles">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="ID_Role" ColumnName="ID_Role" />
+          <ScalarProperty Name="Name_Role" ColumnName="Name_Role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tags">
+      <EntityTypeMapping TypeName="Steam_Model.Tags">
+        <MappingFragment StoreEntitySet="Tags">
+          <ScalarProperty Name="ID_Tag" ColumnName="ID_Tag" />
+          <ScalarProperty Name="Name_Tag" ColumnName="Name_Tag" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Trading_Platform">
+      <EntityTypeMapping TypeName="Steam_Model.Trading_Platform">
+        <MappingFragment StoreEntitySet="Trading_Platform">
+          <ScalarProperty Name="ID_Trading_Platform" ColumnName="ID_Trading_Platform" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Item_ID" ColumnName="Item_ID" />
+          <ScalarProperty Name="Seller_ID" ColumnName="Seller_ID" />
+          <ScalarProperty Name="Customer_ID" ColumnName="Customer_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище Steam_Model.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище Steam_Model.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище Steam_Model.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище Steam_Model.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Steam_Model.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище Steam_Model.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Steam_Model.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище Steam_Model.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище Steam_Model.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="BackupSteamDatabase" FunctionName="Хранилище Steam_Model.BackupSteamDatabase" />
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,36 @@
+﻿<Window x:Class="Practica5.GamesBuyWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Practica5"
+        mc:Ignorable="d"
+        Title="GamesBuyWin" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Button x:Name="Back" Content="Вернуться на главную страницу" Click="Back_Click"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <DataGrid x:Name="GamesTable" AutoGenerateColumns="False" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Name_Game}" Header="Название Игры"/>
+                    <DataGridTextColumn Binding="{Binding Realise_date}" Header="Дата Релиза"/>
+                    <DataGridTextColumn Binding="{Binding Description_Game}" Header="Описание"/>
+                    <DataGridTextColumn Binding="{Binding Price}" Header="Цена"/>
+                    <DataGridTextColumn Binding="{Binding Developers.Name_Developer}" Header="Разработчик"/>
+                    <DataGridTextColumn Binding="{Binding Publishers.Name_Publisher}" Header="Издатель"/>
+                    <DataGridTextColumn Binding="{Binding Tags.Name_Tag}" Header="Тэг"/>
+                    <DataGridTextColumn Binding="{Binding Discounts.Percentage_Discount}" Header="Процент Скидки"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Button x:Name="Add" Grid.Column="0" Content="Купить" Click="Add_Click"/>
+        </Grid>
+    </Grid>
+</Window>
